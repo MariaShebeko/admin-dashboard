@@ -2,6 +2,7 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import Dashboard from "pages/Dashboard/Dashboard";
 import Layout from "pages/Layout/Layout";
+import { Products } from "pages/Products/Products";
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
@@ -20,7 +21,7 @@ function App() {
             <Route element={<Layout />}>
               <Route path="/" element={<Navigate to="/dashboard" />} />
               <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/products" element={<Dashboard />} />
+              <Route path="/products" element={<Products />} />
               <Route path="/customers" element={<Dashboard />} />
               <Route path="/transactions" element={<Dashboard />} />
               <Route path="/geography" element={<Dashboard />} />
