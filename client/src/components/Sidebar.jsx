@@ -10,6 +10,7 @@ import {
   ListItemText,
   Typography,
   useTheme,
+  Divider,
 } from "@mui/material";
 import {
   ChevronLeft,
@@ -25,9 +26,11 @@ import {
   AdminPanelSettingsOutlined,
   TrendingUpOutlined,
   PieChartOutlined,
+  SettingsOutlined,
 } from "@mui/icons-material";
 import { useLocation, useNavigate } from "react-router-dom";
 import FlexBetween from "./FlexBetween";
+import profileImage from "../assets/profile.jpg";
 
 const navItems = [
   {
@@ -88,7 +91,12 @@ const navItems = [
   },
 ];
 
-export const Sidebar = ({ isSidebarOpen, setIsSidebarOpen, isNotMobile }) => {
+export const Sidebar = ({
+  user,
+  isSidebarOpen,
+  setIsSidebarOpen,
+  isNotMobile,
+}) => {
   const theme = useTheme();
   const location = useLocation();
   const navigate = useNavigate();
@@ -118,65 +126,100 @@ export const Sidebar = ({ isSidebarOpen, setIsSidebarOpen, isNotMobile }) => {
           }}
         >
           <Box width="100%">
-            <Box>
-              <FlexBetween color={theme.palette.secondary.main}>
-                <Typography variant="h4" fontWeight="bold">
-                  My app
-                </Typography>
-                {!isNotMobile && (
-                  <IconButton onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
-                    <ChevronLeft />
-                  </IconButton>
-                )}
-              </FlexBetween>
+            <FlexBetween color={theme.palette.secondary.main}>
+              <Typography variant="h4" fontWeight="bold">
+                My app
+              </Typography>
+              {!isNotMobile && (
+                <IconButton onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
+                  <ChevronLeft />
+                </IconButton>
+              )}
+            </FlexBetween>
 
-              <List>
-                {navItems.map(({ text, icon }) => {
-                  const lowerText = text.toLowerCase();
-                  if (!icon) {
-                    return (
-                      <Typography key={text} sx={{ m: "2.25rem 0 1rem 3rem" }}>
-                        {text}
-                      </Typography>
-                    );
-                  }
+            <List>
+              {navItems.map(({ text, icon }) => {
+                const lowerText = text.toLowerCase();
+                if (!icon) {
                   return (
-                    <ListItem key={text} disablePadding>
-                      <ListItemButton
-                        onClick={() => {
-                          navigate(`/${lowerText}`);
-                          setActive(lowerText);
-                        }}
+                    <Typography key={text} sx={{ m: "2.25rem 0 1rem 3rem" }}>
+                      {text}
+                    </Typography>
+                  );
+                }
+                return (
+                  <ListItem key={text} disablePadding>
+                    <ListItemButton
+                      onClick={() => {
+                        navigate(`/${lowerText}`);
+                        setActive(lowerText);
+                      }}
+                      sx={{
+                        backgroundColor:
+                          active === lowerText
+                            ? theme.palette.secondary[300]
+                            : "transparent",
+                        color:
+                          active === lowerText
+                            ? theme.palette.primary[600]
+                            : theme.palette.secondary[200],
+                      }}
+                    >
+                      <ListItemIcon
                         sx={{
-                          backgroundColor:
-                            active === lowerText
-                              ? theme.palette.secondary[300]
-                              : "transparent",
+                          ml: "2rem",
                           color:
                             active === lowerText
                               ? theme.palette.primary[600]
                               : theme.palette.secondary[200],
                         }}
                       >
-                        <ListItemIcon
-                          sx={{
-                            ml: "2rem",
-                            color:
-                              active === lowerText
-                                ? theme.palette.primary[600]
-                                : theme.palette.secondary[200],
-                          }}
-                        >
-                          {icon}
-                        </ListItemIcon>
-                        <ListItemText primary={text} />
-                        {active === lowerText && <ChevronRightOutlined />}
-                      </ListItemButton>
-                    </ListItem>
-                  );
-                })}
-              </List>
-            </Box>
+                        {icon}
+                      </ListItemIcon>
+                      <ListItemText primary={text} />
+                      {active === lowerText && <ChevronRightOutlined />}
+                    </ListItemButton>
+                  </ListItem>
+                );
+              })}
+            </List>
+          </Box>
+
+          <Box>
+            <Divider />
+            <FlexBetween textTransform="none" m="1rem 2rem 0 2rem" gap="1rem">
+              <Box
+                component="img"
+                alt="progile image"
+                src={profileImage}
+                height="40px"
+                width="40px"
+                borderRadius="50%"
+                sx={{ objectFit: "cover" }}
+              />
+
+              <Box textAlign="left">
+                <Typography
+                  fontWeight="bold"
+                  fontSize="0.9rem"
+                  sx={{ color: theme.palette.secondary[100] }}
+                >
+                  {user.name}
+                </Typography>
+                <Typography
+                  fontSize="0.8rem"
+                  sx={{ color: theme.palette.secondary[200] }}
+                >
+                  {user.occupation}
+                </Typography>
+              </Box>
+
+              <IconButton>
+                <SettingsOutlined
+                  sx={{ color: theme.palette.secondary[300], fontSize: "25px" }}
+                />
+              </IconButton>
+            </FlexBetween>
           </Box>
         </Drawer>
       )}
