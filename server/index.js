@@ -10,6 +10,10 @@ import generalRoutes from "./routes/general.js";
 import managementRoutes from "./routes/management.js";
 import salesRoutes from "./routes/sales.js";
 
+// data imports
+// import ProductStat from "./models/ProductStat.js";
+// import { dataProductStat } from "./data/index.js";
+
 // CONFIGURATION
 dotenv.config();
 const app = express();
@@ -42,5 +46,6 @@ mongoose
   .then(() => {
     console.log("DB connected");
     app.listen(PORT, () => console.log(`Server connected on Port: ${PORT}`));
+    // ProductStat.insertMany(dataProductStat);
   })
   .catch((error) => console.log(`Server not connected: ${error}`));
