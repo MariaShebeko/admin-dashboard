@@ -5,6 +5,7 @@ import Layout from "pages/Layout/Layout";
 import { Customers } from "pages/Customers/Customers";
 import { Products } from "pages/Products/Products";
 import { Transactions } from "pages/Transactions/Transactions";
+import { Geography } from "pages/Geography/Geography";
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
@@ -26,7 +27,7 @@ function App() {
               <Route path="/products" element={<Products />} />
               <Route path="/customers" element={<Customers />} />
               <Route path="/transactions" element={<Transactions />} />
-              <Route path="/geography" element={<Dashboard />} />
+              <Route path="/geography" element={<Geography />} />
               <Route path="/overview" element={<Dashboard />} />
               <Route path="/daily" element={<Dashboard />} />
               <Route path="/monthly" element={<Dashboard />} />
