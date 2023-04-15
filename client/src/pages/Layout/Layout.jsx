@@ -6,7 +6,7 @@ import { Sidebar } from "components/Sidebar";
 import { useGetUserQuery } from "services/api";
 import { useSelector } from "react-redux";
 
-export default function Layout() {
+export const Layout = () => {
   const isNotMobile = useMediaQuery("(min-width:600px)");
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const userId = useSelector((state) => state.theme.userId);
@@ -30,4 +30,4 @@ export default function Layout() {
       </Box>
     </Box>
   );
-}
+};
