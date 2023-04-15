@@ -1,11 +1,17 @@
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
-import Dashboard from "pages/Dashboard/Dashboard";
-import Layout from "pages/Layout/Layout";
-import { Customers } from "pages/Customers/Customers";
-import { Products } from "pages/Products/Products";
-import { Transactions } from "pages/Transactions/Transactions";
-import { Geography } from "pages/Geography/Geography";
+import {
+  Layout,
+  Customers,
+  Dashboard,
+  Products,
+  Transactions,
+  Geography,
+  Overview,
+  Daily,
+  Monthly,
+  Breakdown,
+} from "pages";
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
@@ -28,10 +34,10 @@ function App() {
               <Route path="/customers" element={<Customers />} />
               <Route path="/transactions" element={<Transactions />} />
               <Route path="/geography" element={<Geography />} />
-              <Route path="/overview" element={<Dashboard />} />
-              <Route path="/daily" element={<Dashboard />} />
-              <Route path="/monthly" element={<Dashboard />} />
-              <Route path="/breakdown" element={<Dashboard />} />
+              <Route path="/overview" element={<Overview />} />
+              <Route path="/daily" element={<Daily />} />
+              <Route path="/monthly" element={<Monthly />} />
+              <Route path="/breakdown" element={<Breakdown />} />
               <Route path="/admin" element={<Dashboard />} />
               <Route path="/performance" element={<Dashboard />} />
             </Route>
