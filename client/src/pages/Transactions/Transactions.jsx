@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import { useGetTransactionsQuery } from "services/api";
 import { Header } from "components/Header";
@@ -11,10 +11,6 @@ export const Transactions = () => {
   const [page, setPage] = useState(0);
   console.log("🚀 ~ file: Transactions.jsx:12 ~ Transactions ~ page:", page);
   const [pageSize, setPageSize] = useState(20);
-  console.log(
-    "🚀 ~ file: Transactions.jsx:13 ~ Transactions ~ pageSize:",
-    pageSize
-  );
   const [sort, setSort] = useState({});
   const [search, setSearch] = useState("");
   const [onInputSearch, setOnInputSearch] = useState("");
@@ -25,6 +21,7 @@ export const Transactions = () => {
     sort: JSON.stringify(sort),
     search,
   });
+  console.log("🚀 ~ file: Transactions.jsx:28 ~ Transactions ~ data:", data);
 
   const columns = [
     { field: "_id", headerName: "ID", flex: 1 },
@@ -86,7 +83,10 @@ export const Transactions = () => {
           pageSize={pageSize}
           paginationMode="server"
           sortingMode="server"
-          onPageChange={(newPage) => setPage(newPage)}
+          onPageChange={(newPage) => {
+            console.log("newPage", newPage);
+            setPage(newPage);
+          }}
           onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
           onSortModelChange={(newSortModel) => setSort(...newSortModel)}
           slots={{ toolbar: CustomToolbar }}
