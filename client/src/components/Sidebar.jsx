@@ -85,10 +85,6 @@ const navItems = [
     text: "Admin",
     icon: <AdminPanelSettingsOutlined />,
   },
-  {
-    text: "Performance",
-    icon: <TrendingUpOutlined />,
-  },
 ];
 
 export const Sidebar = ({

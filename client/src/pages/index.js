@@ -8,3 +8,4 @@ export * from "./Products";
 export * from "./Transactions";
 export * from "./Monthly";
 export * from "./Breakdown";
+export * from "./Admins";

@@ -11,6 +11,7 @@ import {
   Daily,
   Monthly,
   Breakdown,
+  Admins,
 } from "pages";
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
@@ -38,8 +39,7 @@ function App() {
               <Route path="/daily" element={<Daily />} />
               <Route path="/monthly" element={<Monthly />} />
               <Route path="/breakdown" element={<Breakdown />} />
-              <Route path="/admin" element={<Dashboard />} />
-              <Route path="/performance" element={<Dashboard />} />
+              <Route path="/admin" element={<Admins />} />
             </Route>
           </Routes>
         </ThemeProvider>
