@@ -104,6 +104,7 @@ export const OverviewChart = ({ isDashboard = false, view }) => {
       axisTop={null}
       axisRight={null}
       axisBottom={{
+        // cut the name of the month
         format: (v) => {
           if (isDashboard) return v.slice(0, 3);
           return v;
